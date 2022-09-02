@@ -1,0 +1,38 @@
+@import url(./_reset.scss);
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+html.light {
+	--color-bg: linear-gradient(
+		133deg,
+		rgba(174, 222, 255, 1) 0%,
+		rgba(132, 255, 217, 1) 75%,
+		rgba(0, 212, 255, 1) 100%
+	);
+	--color-text: #020419;
+	--color-text-secondary: rgb(0, 12, 116);
+}
+html.dark {
+	--color-bg: linear-gradient(
+		342deg,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(54, 54, 147, 1) 75%,
+		rgba(0, 212, 255, 1) 100%
+	);
+	--color-text: #ffffff;
+	--color-text-secondary: rgba(0, 212, 255, 1);
+}
+
+body {
+	margin: 0 auto;
+	width: 100%;
+	font-family: "Nunito", sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	background: var(--color-bg);
+	color: var(--color-text);
+	transition: all 0.3s ease-out;
+}
+
+#root {
+	margin: 0 auto;
+}
