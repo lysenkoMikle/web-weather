@@ -64,10 +64,10 @@ const formatForecast = (data) => {
 
 	return { timezone, hourly, nextDay };
 };
-const formatToLocalTime = (secs, zone, format = "hh:mm a") =>
-	DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
-const formatToLocalDay = (secs, zone, format = "cccc, dd LLL yyyy") =>
-	DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
+const formatToLocalTime = (secs, format = "hh:mm a") =>
+	DateTime.fromSeconds(secs).toFormat(format);
+const formatToLocalDay = (secs, format = "cccc, dd LLL yyyy") =>
+	DateTime.fromSeconds(secs).toFormat(format);
 
 const getFormatedWeatherData = async (searchParams) => {
 	const formattedCurWeather = await getWeatherData(

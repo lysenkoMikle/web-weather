@@ -11,6 +11,7 @@ import { FaTemperatureHigh } from "react-icons/fa";
 import { SiWindicss, SiBetfair } from "react-icons/si";
 
 import {
+	formatToLocalDay,
 	formatToLocalTime,
 	iconUrlFromCode,
 } from "../../services/weatherServices";
@@ -96,7 +97,7 @@ const Forecast = ({ weather, unit }) => {
 							{hourly.map((item) => {
 								return (
 									<SwiperSlide className="card" key={item.dt}>
-										<span>{item.date.slice(5, 16)}</span>
+										<span>{formatToLocalTime(item.dt, "ccc, hh:mm a")}</span>
 										<img src={iconUrlFromCode(item.icon)} alt="" />
 										<p>{item.temp.toFixed()}°</p>
 									</SwiperSlide>
@@ -116,7 +117,7 @@ const Forecast = ({ weather, unit }) => {
 							{elementNextDays.map((item) => {
 								return (
 									<SwiperSlide className="card" key={item.dt}>
-										<span>{item.date.slice(5, 16)}</span>
+										<span>{formatToLocalDay(item.dt, "ccc, dd hh:mm a")}</span>
 										<img src={iconUrlFromCode(item.icon)} alt="" />
 										<p>{item.temp.toFixed()}°</p>
 									</SwiperSlide>

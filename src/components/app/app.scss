@@ -40,7 +40,7 @@
 	transition: all 0.2s ease-out;
 	color: var(--color-text);
 	&.active {
-		color: rgb(207, 184, 53);
+		color: var(--color-text-secondary);
 	}
 
 	&:hover {
@@ -56,5 +56,5 @@
 	width: 65px;
 	justify-content: space-between;
 	align-items: center;
-	border-radius: 10px;
+	border-radius: 20px;
 }

@@ -1,7 +1,7 @@
 @import url(./_reset.scss);
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
-html.light {
+html[data-theme="light"] {
 	--color-bg: linear-gradient(
 		133deg,
 		rgba(174, 222, 255, 1) 0%,
@@ -11,7 +11,7 @@ html.light {
 	--color-text: #020419;
 	--color-text-secondary: rgb(0, 12, 116);
 }
-html.dark {
+html[data-theme="dark"] {
 	--color-bg: linear-gradient(
 		342deg,
 		rgba(2, 0, 36, 1) 0%,
@@ -30,7 +30,7 @@ body {
 	font-weight: 400;
 	background: var(--color-bg);
 	color: var(--color-text);
-	transition: all 0.3s ease-out;
+	transition: all 0.5s linear;
 }
 
 #root {

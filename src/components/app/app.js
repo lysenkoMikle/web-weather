@@ -3,27 +3,31 @@ import getFormatedWeatherData from "../../services/weatherServices";
 import CurrentWeather from "../current/current";
 import Forecast from "../forecast/forecast";
 import AppHeader from "../header/header";
-
+import { useTheme } from "../../services/hookChangeTheme";
 import "./app.scss";
 
 const App = (props) => {
 	const topCity = ["kyiv", "warsaw", "london", "paris", "berlin"];
-	const [theme, setTheme] = useState("light");
 	const [currentUnit, setCurrentUnit] = useState("km/h");
 	const [query, setQuery] = useState({ q: "kyiv" });
 	const [units, setUnits] = useState("metric");
 	const [weather, setWeather] = useState();
 	const [errClass, setErrClass] = useState("ok");
 
-	const ChangeTheme = (e) => {
-		let data = e.currentTarget.dataset.theme;
-		let btns = document.querySelectorAll(".btn");
-		localStorage.setItem("theme", data);
-		setTheme(data);
-		btns.forEach((btn) => btn.classList.remove("active"));
+	const { theme, setTheme } = useTheme();
+	const handleLightTheme = (e) => {
+		document
+			.querySelectorAll(".btn")
+			.forEach((btn) => btn.classList.remove("active"));
 		e.currentTarget.classList.add("active");
-		document.documentElement.classList.remove("dark", "light");
-		document.documentElement.classList.add(data);
+		setTheme("light");
+	};
+	const handleDarkTheme = (e) => {
+		document
+			.querySelectorAll(".btn")
+			.forEach((btn) => btn.classList.remove("active"));
+		e.currentTarget.classList.add("active");
+		setTheme("dark");
 	};
 
 	const ChangeUnits = (e) => {
@@ -49,19 +53,14 @@ const App = (props) => {
 		};
 
 		fetchWeather();
-
-		const getSavedTheme = () => {
-			let savedTheme = localStorage.getItem("theme");
-			setTheme(savedTheme);
-		};
-		getSavedTheme();
 	}, [query, units]);
 
 	return (
 		<div className="app container">
 			<AppHeader
 				errorClass={errClass}
-				ChangeTheme={ChangeTheme}
+				lightTheme={handleLightTheme}
+				darkTheme={handleDarkTheme}
 				topCity={topCity}
 				setQuery={setQuery}
 			/>

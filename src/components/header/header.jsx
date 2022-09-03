@@ -1,10 +1,10 @@
 import "./header.scss";
-import Logo from "../../img/logo.png";
+import Logo from "../../img/logo.webp";
 import { FaMoon } from "react-icons/fa";
 import { BsSearch, BsSunFill } from "react-icons/bs";
 import { useState } from "react";
 
-const Header = ({ ChangeTheme, topCity, setQuery, errorClass }) => {
+const Header = ({ lightTheme, darkTheme, topCity, setQuery, errorClass }) => {
 	const [city, setCity] = useState("");
 
 	const searchClick = (e) => {
@@ -66,10 +66,10 @@ const Header = ({ ChangeTheme, topCity, setQuery, errorClass }) => {
 							</form>
 						</div>
 						<div className="nav__items">
-							<button className="btn" data-theme="dark" onClick={ChangeTheme}>
+							<button className="btn" data-theme="dark" onClick={darkTheme}>
 								<FaMoon />
 							</button>
-							<button className="btn" data-theme="light" onClick={ChangeTheme}>
+							<button className="btn" data-theme="light" onClick={lightTheme}>
 								<BsSunFill />
 							</button>
 						</div>

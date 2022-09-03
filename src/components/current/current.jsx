@@ -1,27 +1,30 @@
 import "./current.scss";
-import Dark from "../../img/bgDark.png";
-import Light from "../../img/bgLight2.png";
+
+import boxDark from "../../img/newDarkBg.webp";
+import boxLight from "../../img/newLightBg.webp";
+
 import {
 	formatToLocalDay,
 	formatToLocalTime,
 	iconUrlFromCode,
 } from "../../services/weatherServices";
 
-const CurrentWeather = ({ theme, ChangeUnits, weather }) => {
+const CurrentWeather = ({ ChangeUnits, weather, theme }) => {
 	let { dt, name, country } = weather;
 	let { details, icon, temp, temp_min, temp_max } = weather;
-	let currBg = Light;
 
-	const setCurrentBg = (theme) => {
-		const htmlClass = document.documentElement.classList;
-		htmlClass[0] === "light" ? (currBg = Light) : (currBg = Dark);
-	};
-	setCurrentBg(theme);
+	let boxBg;
+	if (theme === "light") {
+		boxBg = boxLight;
+	} else {
+		boxBg = boxDark;
+	}
 
 	return (
 		<section>
-			<div className="current__wrapper">
-				<img src={currBg} alt="" className="wrapper__bg" />
+			<div
+				className="current__wrapper"
+				style={{ backgroundImage: `url(${boxBg}) ` }}>
 				<div className="current__box">
 					<div className="nav__items metric">
 						<button
@@ -37,7 +40,6 @@ const CurrentWeather = ({ theme, ChangeUnits, weather }) => {
 							°F
 						</button>
 					</div>
-					<img src={currBg} alt="" className="current__bg" />
 					<div className="current__descr">
 						<div className="current__info">
 							<h3>{`${name}, ${country}`}</h3>
@@ -55,7 +57,7 @@ const CurrentWeather = ({ theme, ChangeUnits, weather }) => {
 						</div>
 						<div className="current__local">
 							<p>Last update {formatToLocalTime(dt)}</p>
-							<h4>{formatToLocalDay(dt)}</h4>
+							<h4>{formatToLocalDay(dt, "cccc, dd LLL")}</h4>
 						</div>
 					</div>
 				</div>
