@@ -9,9 +9,8 @@ const Header = ({ lightTheme, darkTheme, topCity, setQuery, errorClass }) => {
 
 	const searchClick = (e) => {
 		e.preventDefault();
-		const form = document.querySelector(".form");
 		if (city) setQuery({ q: city });
-		form.reset();
+		setCity("");
 	};
 
 	let inpClass = "search__input";
@@ -50,7 +49,7 @@ const Header = ({ lightTheme, darkTheme, topCity, setQuery, errorClass }) => {
 					<div className="actions">
 						<div className="search">
 							<form className="form">
-								<label htmlFor="">
+								<label>
 									<input
 										className={inpClass}
 										type="text"

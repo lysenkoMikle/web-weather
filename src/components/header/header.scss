@@ -75,7 +75,7 @@
 		}
 
 		&:hover {
-			color: rgb(207, 184, 53);
+			transform: scale(1.2);
 		}
 	}
 }
@@ -100,9 +100,10 @@
 		outline: none;
 		border: 1px solid var(--color-text);
 		font-size: 22px;
-		padding: 10px;
+		padding: 10px 15px;
 		&::placeholder {
 			color: inherit;
+			opacity: 0.7;
 			font-size: 20px;
 		}
 		&:focus {
